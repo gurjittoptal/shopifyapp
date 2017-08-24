@@ -33,7 +33,13 @@
 
   var myAppJavaScript = function($){
     $('body').append('<p>Your app is using jQuery version '+$.fn.jquery+'</p>');
-  };
+   
+    $('#toptal-slider-addproduct').click(function(e) {
+        e.stopPropagation();
+        var pid = $('#toptal-slider-shopify-id').val();
+        alert(pid);
+      }); 
+   };
 
   if ((typeof jQuery === 'undefined') || (parseFloat(jQuery.fn.jquery) < 1.7)) {
     loadScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', function(){
@@ -48,6 +54,10 @@
 </script> 
 
 <% end %>
+<h2>Add Product</h2>
+<input id="toptal-slider-shopify-id"/>
+<input id="toptal-slider-addproduct" type="submit"/>
+
 <h2>Products</h2>
 
 <ul>
