@@ -15,7 +15,7 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
       
       if product
         result['status'] = 'ok'
-	result['message'] = shop_domain
+	result['message'] = self.shopify_domain
       else
         result['status'] = 'error'
         result['message'] = 'Product id does not exist'

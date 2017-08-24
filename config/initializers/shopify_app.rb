@@ -6,4 +6,8 @@ ShopifyApp.configure do |config|
   config.embedded_app = true
   config.after_authenticate_job = false
   config.session_repository = Shop
+  config.webhooks = [
+    {topic: 'products/update', address: 'https://tpshp.herokuapp.com/webhooks/products_update', format: 'json'},
+    {topic: 'products/delete', address: 'https://tpshp.herokuapp.com/webhooks/products_delete', format: 'json'},
+  ]
 end
