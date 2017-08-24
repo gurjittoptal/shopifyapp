@@ -1,0 +1,2 @@
+class SlideshopProduct < ApplicationRecord
+end
