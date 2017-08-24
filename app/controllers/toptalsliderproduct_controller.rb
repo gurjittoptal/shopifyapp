@@ -15,7 +15,7 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
       
       if product
         result['status'] = 'ok'
-	#result['message'] = current_shop.id
+	result['message'] = ShopifyAPI::Shop.current().id
       else
         result['status'] = 'error'
         result['message'] = 'Product id does not exist'
