@@ -37,7 +37,10 @@
     $('#toptal-slider-addproduct').click(function(e) {
         e.stopPropagation();
         var pid = $('#toptal-slider-shopify-id').val();
-        alert(pid);
+        $.post( "/toptalsliderproduct", { id: pid})
+         .done(function( data ) {
+            alert( "Data Loaded: " + data );
+        });
       }); 
    };
 
