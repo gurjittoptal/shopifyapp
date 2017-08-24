@@ -11,7 +11,7 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
       result['status'] = 'ok'
       result['message'] = 'Product already exists'
     else
-      aproduct = ShopifyAPI::Product.find(params[:id].to_i)
+      aproduct = ShopifyAPI::Product.find(params[:id].to_i, params: { fields:'id,title,images' })
       
       if aproduct
         result['status'] = 'ok'
