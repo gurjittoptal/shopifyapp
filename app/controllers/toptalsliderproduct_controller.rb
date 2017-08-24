@@ -11,11 +11,12 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
       result['status'] = 'ok'
       result['message'] = 'Product already exists'
     else
-      product = ShopifyAPI::Product.find(params[:id].to_i)
+      aproduct = ShopifyAPI::Product.find(params[:id].to_i)
       
-      if product
+      if aproduct
         result['status'] = 'ok'
-	result['message'] = ShopifyAPI::Shop.current().id
+	result['product'] = aproduct
+        result['message'] = ShopifyAPI::Shop.current().id
       else
         result['status'] = 'error'
         result['message'] = 'Product id does not exist'
