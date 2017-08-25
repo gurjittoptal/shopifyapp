@@ -47,7 +47,7 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
           asliderproduct['height'] = aproduct.images[0].height
         end
         
-	createdSlideshopProd = SlideshopProduct.create(shopify_product_id: params[:id], shopid: curshopid, data:JSON.generate(asliderproduct) )         
+	createdSlideshopProd = SlideshopProduct.create(shopify_product_id: params[:id], shopid: shop_domain, data:JSON.generate(asliderproduct) )         
         result['message'] = 'Product has been successfully added'
         result['product'] = asliderproduct 
       else
