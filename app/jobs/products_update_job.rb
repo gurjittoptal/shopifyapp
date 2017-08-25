@@ -10,9 +10,9 @@ class ProductsUpdateJob < ActiveJob::Base
         proddata['id'] = webhook['id']
 	
         if webhook['images'].length
-          proddata['src'] = webhook['images'][0].src
-          proddata['width'] = webhook['images'][0].width
-          proddata['height'] = webhook['images'][0].height
+          proddata['src'] = webhook['images'][0]['src']
+          proddata['width'] = webhook['images'][0]['width']
+          proddata['height'] = webhook['images'][0]['height']
         end
  
         aproduct = SlideshopProduct.find_by(shopify_product_id: pid.to_s)
