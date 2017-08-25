@@ -49,6 +49,7 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
         
 	createdSlideshopProd = SlideshopProduct.create(shopify_product_id: params[:id], shopid: shop_domain, data:JSON.generate(asliderproduct) )         
         result['message'] = 'Product has been successfully added'
+        result['domain'] = shop_domain
         result['product'] = asliderproduct 
       else
         result['status'] = 'error'
