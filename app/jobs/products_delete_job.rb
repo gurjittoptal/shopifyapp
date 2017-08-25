@@ -4,7 +4,7 @@ class ProductsDeleteJob < ActiveJob::Base
 
     shop.with_shopify_session do
     
-      pid = webhook.id    
+      pid = webhook['id']    
       aproduct = SlideshopProduct.find_by(shopify_product_id: pid.to_s)
       aproduct.destroy
 
