@@ -2,6 +2,13 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
 
   def list
     processed = []
+    allproducts = SlideshopProduct.all
+    
+    selected.each do |p|
+      metadata = JSON.parse(p.data)
+      processed.push(metdata)
+    end
+   
     render json: processed
   end
 
@@ -17,11 +24,10 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
         result['status'] = 'ok'
 	result['product'] = aproduct
         curshopid = ShopifyAPI::Shop.current().id
-        #productData = {'id':aproduct['id'],'title':aproduct['title']}
         asliderproduct = {}
+        asliderproduct['title'] = aproduct.title
+        asliderproduct['id'] = aproduct.id
 	if aproduct.images.length
-          asliderproduct['title'] = aproduct.title
-          asliderproduct['id'] = aproduct.id
           asliderproduct['src'] = aproduct.images[0].src
           asliderproduct['width'] = aproduct.images[0].width
           asliderproduct['height'] = aproduct.images[0].height
