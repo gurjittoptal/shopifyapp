@@ -6,7 +6,7 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
     
     allproducts.each do |p|
       pmetadata = JSON.parse(p.data)
-      processed.push(p)
+      processed.push(pmetadata)
     end
    
     render json: processed
