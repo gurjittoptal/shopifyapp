@@ -12,11 +12,14 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
 
     allproducts = SlideshopProduct.find_by(shopid: storeid)
 
-    processed.push({'domain':storeid})
-    allproducts.each do |p|
-      pmetadata = JSON.parse(p.data)
-      processed.push(pmetadata)
+    #processed.push({'domain':storeid})
+    if allproducts
+      allproducts.each do |p|
+        pmetadata = JSON.parse(p.data)
+        processed.push(pmetadata)
+      end
     end
+
     #log.debug "Prodcut list for toptalslider"
     render json: processed
     #render layout: false
