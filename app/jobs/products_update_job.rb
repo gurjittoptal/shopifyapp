@@ -16,6 +16,7 @@ class ProductsUpdateJob < ActiveJob::Base
         end
  
         aproduct = SlideshopProduct.find_by(shopify_product_id: pid.to_s)
+        aproduct.curshopid = shop_domain
         aproduct.data = JSON.generate(proddata)
         aproduct.save
         

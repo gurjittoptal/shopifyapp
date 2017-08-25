@@ -4,8 +4,15 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
 
   def list
     processed = []
-    allproducts = SlideshopProduct.all
-    processed.push({'ddomain':params[:shop]})
+    
+    storeid = params[:shop]
+    if storeid=='':
+      storeid = shop_domain 
+    end
+
+    allproducts = SlideshopProduct.find_by(shopid: storeid)
+
+    processed.push({'domain':storeid})
     allproducts.each do |p|
       pmetadata = JSON.parse(p.data)
       processed.push(pmetadata)
@@ -52,5 +59,8 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
     processed = []
     render json: processed
   end
-
+  
+  def shop_domain
+    request.headers['HTTP_X_SHOPIFY_SHOP_DOMAIN']
+  end
 end
