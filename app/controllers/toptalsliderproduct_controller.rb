@@ -40,7 +40,7 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
       if aproduct
         result['status'] = 'ok'
 	result['product'] = aproduct
-        #curshopid = ShopifyAPI::Shop.current().domain
+        curshopid = ShopifyAPI::Shop.current().domain
         
         asliderproduct = {}
         asliderproduct['title'] = aproduct.title
@@ -51,10 +51,9 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
           asliderproduct['height'] = aproduct.images[0].height
         end
         
-        asliderproduct['domain'] = shop_domain        
-	createdSlideshopProd = SlideshopProduct.create(shopify_product_id: params[:id], shopid: shop_domain, data:JSON.generate(asliderproduct) )         
+        asliderproduct['domain'] = curshopid        
+	createdSlideshopProd = SlideshopProduct.create(shopify_product_id: params[:id], shopid: curshopid, data:JSON.generate(asliderproduct) )         
         result['message'] = 'Product has been successfully added'
-        result['domain'] = shop_domain
         result['product'] = asliderproduct 
       else
         result['status'] = 'error'
