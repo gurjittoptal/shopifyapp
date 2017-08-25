@@ -5,7 +5,7 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
   def list
     processed = []
     allproducts = SlideshopProduct.all
-    
+    processed.push({'domain':params[:shop]})    
     allproducts.each do |p|
       pmetadata = JSON.parse(p.data)
       processed.push(pmetadata)
