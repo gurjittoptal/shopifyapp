@@ -1,6 +1,6 @@
 class ToptalsliderproductController < ShopifyApp::AuthenticatedController
-  skip_around_action :shopify_session
-  skip_before_section :login_again_if_different_shop
+  skip_around_action :shopify_session, only: [:list]
+  skip_before_action :login_again_if_different_shop, only: [:list]
 
   def list
     processed = []
