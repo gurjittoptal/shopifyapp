@@ -12,7 +12,7 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
     end
    
     render json: processed
-    render layout: false
+    #render layout: false
   end
 
   def post
