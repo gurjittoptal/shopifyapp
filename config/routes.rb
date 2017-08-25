@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   mount ShopifyApp::Engine, at: '/'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  delete '/admin/toptalsliderproduct/' => 'toptalsliderproduct#delete'
-  post '/admin/toptalsliderproduct/' => 'toptalsliderproduct#post'
+  delete '/toptalsliderproduct/' => 'toptalsliderproduct#delete'
+  post '/toptalsliderproduct/' => 'toptalsliderproduct#post'
   get '/toptalsliderproduct/' => 'toptalsliderproduct#list'
 end
