@@ -10,7 +10,7 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
       pmetadata = JSON.parse(p.data)
       processed.push(pmetadata)
     end
-    log.debug "Prodcut list for toptalslider"
+    #log.debug "Prodcut list for toptalslider"
     render json: processed
     #render layout: false
   end
