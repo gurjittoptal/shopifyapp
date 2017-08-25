@@ -10,7 +10,7 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
       storeid = shop_domain 
     end
 
-    allproducts = SlideshopProduct..where(["shopid = :shopidval", { shopidval:storeid}])
+    allproducts = SlideshopProduct.where(["shopid = :shopidval", { shopidval:storeid}])
 
     processed.push({'domain':storeid})
     if allproducts
