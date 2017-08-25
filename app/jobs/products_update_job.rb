@@ -9,7 +9,7 @@ class ProductsUpdateJob < ActiveJob::Base
         proddata['title'] = webhook['title']
         proddata['id'] = webhook['id']
 	
-        if webhook.images.length
+        if webhook['images'].length
           proddata['src'] = webhook['images'][0].src
           proddata['width'] = webhook['images'][0].width
           proddata['height'] = webhook['images'][0].height
