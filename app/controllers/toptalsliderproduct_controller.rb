@@ -1,4 +1,6 @@
 class ToptalsliderproductController < ShopifyApp::AuthenticatedController
+  skip_around_action :shopify_session
+  skip_before_section :login_again_if_different_shop
 
   def list
     processed = []
@@ -10,6 +12,7 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
     end
    
     render json: processed
+    render layout: false
   end
 
   def post
