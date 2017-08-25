@@ -6,7 +6,7 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
     processed = []
     
     storeid = params[:shop]
-    if storeid=='':
+    if storeid==''
       storeid = shop_domain 
     end
 
@@ -33,7 +33,8 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
       if aproduct
         result['status'] = 'ok'
 	result['product'] = aproduct
-        curshopid = ShopifyAPI::Shop.current().domain
+        #curshopid = ShopifyAPI::Shop.current().domain
+        
         asliderproduct = {}
         asliderproduct['title'] = aproduct.title
         asliderproduct['id'] = aproduct.id
