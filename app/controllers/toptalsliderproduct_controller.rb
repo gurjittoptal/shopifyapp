@@ -4,7 +4,7 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
     processed = []
     allproducts = SlideshopProduct.all
     
-    selected.each do |p|
+    allproducts.each do |p|
       metadata = JSON.parse(p.data)
       processed.push(metdata)
     end
