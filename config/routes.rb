@@ -5,6 +5,5 @@ Rails.application.routes.draw do
 
   delete '/admin/toptalsliderproduct/' => 'toptalsliderproduct#delete'
   post '/admin/toptalsliderproduct/' => 'toptalsliderproduct#post'
-
-  get '/toptalsliderproducts/' => 'toptalsliderproduct#list'
+  get '/toptalsliderproduct/' => 'toptalsliderproduct#list'
 end
