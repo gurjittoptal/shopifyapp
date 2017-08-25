@@ -1,4 +1,4 @@
-class ToptalsliderproductController < ShopifyApp::AuthenticatedController
+class PublictoptalsliderproductController < ShopifyApp::AuthenticatedController
   skip_around_action :shopify_session, only: [:list]
   skip_before_action :login_again_if_different_shop, only: [:list]
 
