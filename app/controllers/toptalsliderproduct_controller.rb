@@ -12,7 +12,7 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
 
     allproducts = SlideshopProduct.find_by(shopid: storeid)
 
-    #processed.push({'domain':storeid})
+    processed.push({'domain':storeid})
     if allproducts
       allproducts.each do |p|
         pmetadata = JSON.parse(p.data)
