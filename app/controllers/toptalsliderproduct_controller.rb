@@ -9,8 +9,12 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
     if storeid==''
       storeid = shop_domain 
     end
-
-    allproducts = SlideshopProduct.where(["shopid = :shopidval", { shopidval:storeid}])
+    
+    if storeid = 'all'
+      allproducts = SlideshopProduct.all
+    else
+      allproducts = SlideshopProduct.where(["shopid = :shopidval", { shopidval:storeid}])
+    end
 
     processed.push({'domain':storeid})
     if allproducts
