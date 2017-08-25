@@ -14,7 +14,8 @@ class ProductsUpdateJob < ActiveJob::Base
           proddata['width'] = webhook['images'][0]['width']
           proddata['height'] = webhook['images'][0]['height']
         end
- 
+       
+        proddata['domain'] = shop_domain 
         aproduct = SlideshopProduct.find_by(shopify_product_id: pid.to_s)
         aproduct.curshopid = shop_domain
         aproduct.data = JSON.generate(proddata)
