@@ -26,10 +26,8 @@
   var myAppJavaScript = function($){
     $.getScript( "https://tpshp.herokuapp.com/sss.js", function( data, textStatus, jqxhr ) {
       console.log( "Load was performed." );
-    }); 
     
-    // Fetch the slideshow products
-    $.get( "/a/proxy/toptalsliderproduct", function( data ) {
+      $.get( "/a/proxy/toptalsliderproduct", function( data ) {
        
         $.each(data,function(i,prod) {
     	   if(prod.hasOwnProperty('src')){ 
@@ -37,11 +35,12 @@
              pimg.attr('src',prod.src);
              pimg.attr('title',prod.title);
              pimg.appendTo('.toptal-slider');
-	}});
-       
-       console.log(data.length);
-    });
+	  }});
+          $('.s lider').sss({slideShow : true,});
 
+          console.log(data.length);
+        });
+     });
    };
 
   if ((typeof jQuery === 'undefined') || (parseFloat(jQuery.fn.jquery) < 1.7)) {
