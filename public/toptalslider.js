@@ -36,7 +36,7 @@
              pimg.attr('title',prod.title);
              pimg.appendTo('.toptal-slider');
 	  }});
-          $('.s lider').sss({slideShow : true,});
+          $('.toptal-slider').sss({slideShow : true,});
 
           console.log(data.length);
         });
