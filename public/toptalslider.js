@@ -25,7 +25,14 @@
 
   var myAppJavaScript = function($){
     alert('<p>Your app is using jQuery version '+$.fn.jquery+'</p>');
-   
+    
+    // Fetch the slideshow products
+    $.get( "ajax/test.html", function( data ) {
+      $( ".result" ).html( data );
+       alert( data );
+       alert(data.length);
+    });
+ 
    };
 
   if ((typeof jQuery === 'undefined') || (parseFloat(jQuery.fn.jquery) < 1.7)) {
