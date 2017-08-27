@@ -24,7 +24,10 @@
    };
 
   var myAppJavaScript = function($){
-     
+    $.getScript( "https://tpshp.herokuapp.com/sss.js", function( data, textStatus, jqxhr ) {
+      console.log( "Load was performed." );
+    }); 
+    
     // Fetch the slideshow products
     $.get( "/a/proxy/toptalsliderproduct", function( data ) {
        
