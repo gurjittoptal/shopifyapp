@@ -24,6 +24,7 @@
    };
 
   var myAppJavaScript = function($){
+
     // Fetch the slideshow products
     $.get( "/a/proxy/toptalsliderproduct", function( data ) {
       $( ".result" ).html( data );
@@ -38,7 +39,11 @@
        
        console.log(data.length);
     });
- 
+
+    loadScript('//tpshp.herokuapp.com/toptalslider.js', function(){
+      $('.slider').sss({ slideShow : true, });
+    }); 
+
    };
 
   if ((typeof jQuery === 'undefined') || (parseFloat(jQuery.fn.jquery) < 1.7)) {
