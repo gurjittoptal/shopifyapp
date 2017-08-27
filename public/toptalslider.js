@@ -32,7 +32,7 @@
       $( ".result" ).html( data );
        
         $.each(data,function(i,prod) {
-    	  $( "<img src='"+prod.src+"' title='"+prod.title+"'" ).appendTo( toptalslider_div ); }
+    	  $( "<img src='"+prod.src+"' title='"+prod.title+"'" ).appendTo( toptalslider_div ); 
 	});
        
        alert(data.length);
