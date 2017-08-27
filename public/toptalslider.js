@@ -31,7 +31,7 @@
     $.get( "/a/proxy/toptalsliderproduct", function( data ) {
       $( ".result" ).html( data );
        
-      data.forEach(function(prod) {
+        $.each(data,function(i,prod) {
     	  $( "<img src='"+prod.src+"' title='"+prod.title+"'" ).appendTo( toptalslider_div ); }
 	});
        
