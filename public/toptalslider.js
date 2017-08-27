@@ -33,10 +33,10 @@
              var pimg = $('<img>');
              pimg.attr('src',prod.src);
              pimg.attr('title',prod.title);
-             pimg.appendto('.toptal-slider');
+             pimg.appendTo('.toptal-slider');
 	}});
        
-       alert(data.length);
+       console.log(data.length);
     });
  
    };
