@@ -24,15 +24,9 @@
    };
 
   var myAppJavaScript = function($){
-    
-    loadScript('//tpshp.herokuapp.com/toptalslider.js', function(){
-      //$('.slider').sss({ slideShow : true, });
-      console.log('slider loaded');      
-    });
-
+     
     // Fetch the slideshow products
     $.get( "/a/proxy/toptalsliderproduct", function( data ) {
-      $( ".result" ).html( data );
        
         $.each(data,function(i,prod) {
     	   if(prod.hasOwnProperty('src')){ 
