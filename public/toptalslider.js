@@ -27,7 +27,7 @@
     alert('<p>Your app is using jQuery version '+$.fn.jquery+'</p>');
     
     // Fetch the slideshow products
-    $.get( "ajax/test.html", function( data ) {
+    $.get( "/a/proxy/toptalsliderproduct", function( data ) {
       $( ".result" ).html( data );
        alert( data );
        alert(data.length);
