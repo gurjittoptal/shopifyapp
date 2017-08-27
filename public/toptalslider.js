@@ -25,11 +25,16 @@
 
   var myAppJavaScript = function($){
     alert('<p>Your app is using jQuery version '+$.fn.jquery+'</p>');
-    
+    var toptalslider_div = '.toptal-slider';
+
     // Fetch the slideshow products
     $.get( "/a/proxy/toptalsliderproduct", function( data ) {
       $( ".result" ).html( data );
-       alert( data );
+       
+      data.forEach(function(prod) {
+    	  $( "<img src='"+prod.src+"' title='"+prod.title+"'" ).appendTo( toptalslider_div ); }
+	});
+       
        alert(data.length);
     });
  
