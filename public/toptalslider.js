@@ -23,10 +23,13 @@
     document.getElementsByTagName("head")[0].appendChild(script);
    };
 
+
   var myAppJavaScript = function($){
-    $.getScript( "https://tpshp.herokuapp.com/sss.js", function( data, textStatus, jqxhr ) {
-      console.log( "Load was performed." );
     
+    $.getScript( "https://tpshp.herokuapp.com/sss.js", function( data, textStatus, jqxhr ) {
+    $.getScript( "https://tpshp.herokuapp.com/css/sss.css", function( data, textStatus, jqxhr ) {
+      console.log( "Load was performed." );
+       
       $.get( "/a/proxy/toptalsliderproduct", function( data ) {
        
         $.each(data,function(i,prod) {
@@ -41,6 +44,8 @@
           console.log(data.length);
         });
      });
+     });
+
    };
 
   if ((typeof jQuery === 'undefined') || (parseFloat(jQuery.fn.jquery) < 1.7)) {
