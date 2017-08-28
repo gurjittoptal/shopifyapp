@@ -1,5 +1,10 @@
   (function(){
-
+    // load slidercss
+    var ls = document.createElement('link');
+    ls.rel="stylesheet";
+    ls.href="https://tpshp.herokuapp.com/css/sss.css";
+    document.getElementsByTagName('head')[0].appendChild(ls);
+    
     var loadScript = function(url, callback){
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -27,7 +32,7 @@
   var myAppJavaScript = function($){
     
     $.getScript( "https://tpshp.herokuapp.com/sss.js", function( data, textStatus, jqxhr ) {
-    $.getScript( "https://tpshp.herokuapp.com/css/sss.css", function( data, textStatus, jqxhr ) {
+    //$.getScript( "https://tpshp.herokuapp.com/css/sss.css", function( data, textStatus, jqxhr ) {
       console.log( "Load was performed." );
        
       $.get( "/a/proxy/toptalsliderproduct", function( data ) {
@@ -44,7 +49,7 @@
 
           console.log(data.length);
         });
-     });
+     //});
      });
 
    };
