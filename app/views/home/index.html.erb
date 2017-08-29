@@ -40,7 +40,7 @@
 
   var myAppJavaScript = function($){
     console.log(<% @shopdomain %>) 
-    $.get( "/toptalsliderproduct?shop=<% @shopdomain %>", function( data ) { 
+    $.get( "/toptalsliderproduct?shop=<%= @shopdomain %>", function( data ) { 
       $.each(data,function(i,prod) {
              var sliderproduct = $('<div>');
              sliderproduct.attr('pid',prod.id);
