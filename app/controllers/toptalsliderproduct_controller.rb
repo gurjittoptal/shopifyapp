@@ -64,11 +64,26 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
   end
 
   def delete
-    processed = []
-    render json: processed
+    pid = params[:pid]
+
+    result = {}
+    if SlideshopProduct.exists?(:shopify_product_id => params[:id]) 
+      aproduct = SlideshopProduct.find_by(shopify_product_id: pid.to_s)
+      shopdomain = ShopifyAPI::Shop.current().domain
+      
+      if aproduct.shopid == shopdomain
+        aproduct.destroy
+        result['status'] = 'ok'
+        result['message'] = 'Successfully deleted'
+        result['pid'] = pid
+      else
+        result['status'] = 'error'
+        result['message'] = 'Invalid Shopid'
+    else
+      result['status'] = 'error'
+      result['message'] = 'Product does not exist'
+
+    render json: result
   end
   
-  def shop_domain
-    request.headers['HTTP_X_SHOPIFY_SHOP_DOMAIN']
-  end
 end
