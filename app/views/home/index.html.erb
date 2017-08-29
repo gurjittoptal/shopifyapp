@@ -74,19 +74,23 @@
                  sliderproduct.appendTo('.slider-products');
                 };
 
+    var _attachdeleteevents = function(){
+               $( ".delete-from-slider" ).click(function() {
+                 var pid = this.getAttribute('attr-pid');
+                 $.ajax({
+                    url: '/toptalsliderproduct/'+pid,
+                    type: 'DELETE',
+                    success: function(result) {
+                          if(result.hasOwnProperty('pid')){ $('.tpslider-'+result.pid).remove();}
+                           }
+                      });
+                  });
+               };   
+  
+
     $.get( "/toptalsliderproduct?shop=<%= @shopdomain %>", function( data ) { 
       $.each(data,function(i,prod) { _appendprod(prod); });
-    
-      $( ".delete-from-slider" ).click(function() {
-        var pid = this.getAttribute('attr-pid');
-        $.ajax({
-    	    url: '/toptalsliderproduct/'+pid,
-    	    type: 'DELETE',
-            success: function(result) {
-                 if(result.hasOwnProperty('pid')){ $('.tpslider-'+result.pid).remove();}
-		}
-	  });
-        });
+      _attachdeleteevents();
     });
  
     $('#toptal-slider-addproduct').click(function(e) {
@@ -94,7 +98,10 @@
         var pid = $('#toptal-slider-shopify-id').val();
         $.post( "/toptalsliderproduct", { id: pid})
          .done(function( data ) {
-	    if(data.hasOwnProperty('product')){ _appendprod(data.product); }          
+	    if(data.hasOwnProperty('product'))
+		{ _appendprod(data.product); 
+		  _attachdeleteevents();
+		}          
 	  });
       }); 
    };
