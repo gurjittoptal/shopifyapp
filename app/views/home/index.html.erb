@@ -5,6 +5,13 @@
     });
   </script>
 
+  <style type="text/css">
+    h2 {color:red;}
+    .delete-from-slider{ color:red; }
+    .tpslider {}      
+
+  </style>
+
   <script type="text/javascript">
   (function(){
 
@@ -34,22 +41,25 @@
   var myAppJavaScript = function($){
     $('body').append('<p>Your app is using jQuery version '+$.fn.jquery+'</p>');
   
-    $.get( "/toptalsliderproduct?shop=<%= @shopdomain %>", function( data ) { 
+    $.get( "/a/proxy/toptalsliderproduct", function( data ) { 
       $.each(data,function(i,prod) {
              var sliderproduct = $('<div>');
              sliderproduct.attr('pid',prod.id);
-             sliderproduct.html(prod.title);
-             sliderproduct.addClass('slider-'+prod.id);
-             sliderproduct.addClass('delete-from-slider');
+             sliderproduct.html(prod.title+' <span class="delete-from-slider" attr-pid="'+prod.id+'">Delete</span>);
+             sliderproduct.addClass('tpslider');
+             sliderproduct.addClass('tpslider-'+prod.id);
              sliderproduct.appendTo('.slider-products');
       });
-
+    
       $( ".delete-from-slider" ).click(function() {
-        var pid = this.getAttribute(pid);
+        var pid = this.getAttribute('attr-pid');
+        $.delete( "/toptalsliderproduct", { id: pid})
+         .done(function( data ) {
+            console.log( "Data Loaded: " + data );
+        });
         console.log( "delete " +  pid  );
-      });
-  
-      });// end get toptalsliderproducts
+        });
+    });
  
     $('#toptal-slider-addproduct').click(function(e) {
         e.stopPropagation();
@@ -78,5 +88,6 @@
 <input id="toptal-slider-shopify-id"/>
 <input id="toptal-slider-addproduct" type="submit"/>
 
-<h2>Products</h2>
-<div class="slider-products"></div>
+<h2>Slider Products</h2>
+<div class="slider-products">
+</div>
