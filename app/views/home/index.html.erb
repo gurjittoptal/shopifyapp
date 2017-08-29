@@ -64,15 +64,18 @@
 
   var myAppJavaScript = function($){
     console.log(<% @shopdomain %>) 
+    var _appendprod = function (prod) 
+		{
+                 var sliderproduct = $('<div>');
+                 sliderproduct.attr('pid',prod.id);
+                 sliderproduct.html('<span class="delete-from-slider" attr-pid="'+prod.id+'">[DELETE]</span>  ' + prod.title);
+                 sliderproduct.addClass('tpslider');
+                 sliderproduct.addClass('tpslider-'+prod.id);
+                 sliderproduct.appendTo('.slider-products');
+                };
+
     $.get( "/toptalsliderproduct?shop=<%= @shopdomain %>", function( data ) { 
-      $.each(data,function(i,prod) {
-             var sliderproduct = $('<div>');
-             sliderproduct.attr('pid',prod.id);
-             sliderproduct.html('<span class="delete-from-slider" attr-pid="'+prod.id+'">[DELETE]</span>  ' + prod.title);
-             sliderproduct.addClass('tpslider');
-             sliderproduct.addClass('tpslider-'+prod.id);
-             sliderproduct.appendTo('.slider-products');
-      });
+      $.each(data,function(i,prod) { _appendprod(prod); });
     
       $( ".delete-from-slider" ).click(function() {
         var pid = this.getAttribute('attr-pid');
@@ -80,7 +83,7 @@
     	    url: '/toptalsliderproduct/'+pid,
     	    type: 'DELETE',
             success: function(result) {
-                 if(result.hasOwnProperty('id')){ $('.tpslider-'+result.id).remove();}
+                 if(result.hasOwnProperty('pid')){ $('.tpslider-'+result.pid).remove();}
 		}
 	  });
         });
@@ -91,8 +94,10 @@
         var pid = $('#toptal-slider-shopify-id').val();
         $.post( "/toptalsliderproduct", { id: pid})
          .done(function( data ) {
-            alert( "Data Loaded: " + data );
-        });
+            if(result.hasOwnProperty('pid')){
+		{
+                 console.log('add new');
+                });
       }); 
    };
 
