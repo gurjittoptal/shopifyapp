@@ -16,7 +16,6 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
       allproducts = SlideshopProduct.where(["shopid = :shopidval", { shopidval:storeid}])
     end
 
-    processed.push({'domain':storeid})
     if allproducts
       allproducts.each do |p|
         pmetadata = JSON.parse(p.data)
