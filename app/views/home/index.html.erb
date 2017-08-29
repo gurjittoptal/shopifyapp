@@ -39,7 +39,7 @@
    };
 
   var myAppJavaScript = function($){
-  
+    console.log(<% @shopdomain %>) 
     $.get( "/toptalsliderproduct?shop=<% @shopdomain %>", function( data ) { 
       $.each(data,function(i,prod) {
              var sliderproduct = $('<div>');
