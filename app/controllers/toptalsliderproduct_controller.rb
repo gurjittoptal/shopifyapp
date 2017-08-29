@@ -63,12 +63,12 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
     render json: result
   end
 
-  def delete
-    pid = params[:pid]
+  def delete(:pid)
+    #pid = params[:pid]
 
     result = {}
-    if SlideshopProduct.exists?(:shopify_product_id => params[:id]) 
-      aproduct = SlideshopProduct.find_by(shopify_product_id: pid.to_s)
+    if SlideshopProduct.exists?(:shopify_product_id => pid) 
+      aproduct = SlideshopProduct.find_by(shopify_product_id: pid)
       shopdomain = ShopifyAPI::Shop.current().domain
       
       if aproduct.shopid == shopdomain

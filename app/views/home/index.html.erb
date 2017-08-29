@@ -77,7 +77,7 @@
       $( ".delete-from-slider" ).click(function() {
         var pid = this.getAttribute('attr-pid');
         $.ajax({
-    	    url: '/toptalsliderproduct?id='+pid,
+    	    url: '/toptalsliderproduct/'+pid,
     	    type: 'DELETE',
             success: function(result) {
                  if(result.hasOwnProperty('id')){ $('.tpslider-'+result.id).remove();}
