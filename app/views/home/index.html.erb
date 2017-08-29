@@ -18,7 +18,8 @@
 	line-height: 24px;}
 
     .delete-from-slider{
-	font-size: 12px; 
+	font-size: 10px;
+        font-weight:600; 
 	color:red;
         cursor:pointer;
         }
@@ -67,7 +68,7 @@
       $.each(data,function(i,prod) {
              var sliderproduct = $('<div>');
              sliderproduct.attr('pid',prod.id);
-             sliderproduct.html(prod.title+' <span class="delete-from-slider" attr-pid="'+prod.id+'"> [ DELETE ]</span>');
+             sliderproduct.html('<span class="delete-from-slider" attr-pid="'+prod.id+'"> [ DELETE ]</span>' + prod.title);
              sliderproduct.addClass('tpslider');
              sliderproduct.addClass('tpslider-'+prod.id);
              sliderproduct.appendTo('.slider-products');
@@ -75,11 +76,14 @@
     
       $( ".delete-from-slider" ).click(function() {
         var pid = this.getAttribute('attr-pid');
-        $.delete( "/toptalsliderproduct", { id: pid})
-         .done(function( data ) {
-            console.log( "Data Loaded: " + data );
-        });
-        console.log( "delete " +  pid  );
+        $.ajax({
+    	    url: '/toptalsliderproduct?id='+pid,
+    	    type: 'DELETE',
+            success: function(result) {
+         	 console.log(result.id);
+                 $('.tpslider-'+result.id).remove();
+		}
+	  });
         });
     });
  
