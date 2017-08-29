@@ -2,7 +2,7 @@
     // load slidercss
     var ls = document.createElement('link');
     ls.rel="stylesheet";
-    ls.href="https://tpshp.herokuapp.com/css/sss.css";
+    ls.href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css";
     document.getElementsByTagName('head')[0].appendChild(ls);
     
     var loadScript = function(url, callback){
@@ -31,7 +31,7 @@
 
   var myAppJavaScript = function($){
     
-    $.getScript( "https://tpshp.herokuapp.com/sss.js", function( data, textStatus, jqxhr ) {
+    $.getScript( "//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js", function( data, textStatus, jqxhr ) {
     //$.getScript( "https://tpshp.herokuapp.com/css/sss.css", function( data, textStatus, jqxhr ) {
       console.log( "Load was performed." );
        
@@ -45,8 +45,8 @@
              pimg.appendTo('.toptal-slider');
 	  }});
           
-          $('.toptal-slider').sss();
-
+          //$('.toptal-slider').sss();
+          $('.toptal-slider').slick();
           console.log(data.length);
         });
      //});
