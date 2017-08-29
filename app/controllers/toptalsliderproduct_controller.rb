@@ -8,8 +8,6 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
     storeid = ''
     if params.has_key?(:shop) 
       storeid = params[:shop]
-    else
-      storeid = ShopifyAPI::Shop.current().domain 
     end
     
     if storeid == 'all'
