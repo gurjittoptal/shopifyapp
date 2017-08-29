@@ -38,7 +38,7 @@
       $.each(data,function(i,prod) {
              var sliderproduct = $('<div>');
              sliderproduct.attr('pid',prod.id);
-             sliderproduct..html(prod.title);
+             sliderproduct.html(prod.title);
              sliderproduct.addClass('slider-'+prod.id);
              sliderproduct.addClass('delete-from-slider');
              sliderproduct.appendTo('.slider-products');
@@ -80,22 +80,3 @@
 
 <h2>Products</h2>
 <div class="slider-products"></div>
-<ul>
-  <% @products.each do |product| %>
-    <li><%= link_to product.title, "https://#{@shop_session.url}/admin/products/#{product.id}", target: "_top" %></li>
-  <% end %>
-</ul>
-
-<hr>
-
-<h2>Webhooks</h2>
-
-<% if @webhooks.present? %>
-  <ul>
-    <% @webhooks.each do |webhook| %>
-      <li><%= webhook.topic %> : <%= webhook.address %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>This app has not created any webhooks for this Shop. Add webhooks to your ShopifyApp initializer if you need webhooks</p>
-<% end %>
