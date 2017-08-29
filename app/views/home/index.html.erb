@@ -34,7 +34,7 @@
   var myAppJavaScript = function($){
     $('body').append('<p>Your app is using jQuery version '+$.fn.jquery+'</p>');
   
-    $.get( "/a/proxy/toptalsliderproduct", function( data ) { 
+    $.get( "/toptalsliderproduct", function( data ) { 
       $.each(data,function(i,prod) {
              var sliderproduct = $('<div>');
              sliderproduct.attr('pid',prod.id);
