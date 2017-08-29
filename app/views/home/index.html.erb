@@ -94,7 +94,7 @@
         var pid = $('#toptal-slider-shopify-id').val();
         $.post( "/toptalsliderproduct", { id: pid})
          .done(function( data ) {
-          
+	    if(data.hasOwnProperty('product')){ _appendprod(data.product); }          
 	  });
       }); 
    };
