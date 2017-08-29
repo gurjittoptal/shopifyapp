@@ -33,7 +33,24 @@
 
   var myAppJavaScript = function($){
     $('body').append('<p>Your app is using jQuery version '+$.fn.jquery+'</p>');
-   
+  
+    $.get( "/a/proxy/toptalsliderproduct", function( data ) { 
+      $.each(data,function(i,prod) {
+             var sliderproduct = $('<div>');
+             sliderproduct.attr('pid',prod.id);
+             sliderproduct.class('title',prod.title);
+             sliderproduct.addClass('slider-'+prod.id);
+             sliderproduct.addClass('delete-from-slider');
+             sliderproduct.appendTo('.slider-products');
+      });
+
+      $( ".delete-from-slider" ).click(function() {
+        var pid = this.getAttribute(pid);
+        console.log( "delete " +  pid  );
+      });
+  
+      });// end get toptalsliderproducts
+ 
     $('#toptal-slider-addproduct').click(function(e) {
         e.stopPropagation();
         var pid = $('#toptal-slider-shopify-id').val();
@@ -62,7 +79,7 @@
 <input id="toptal-slider-addproduct" type="submit"/>
 
 <h2>Products</h2>
-
+<div class="slider-products"></div>
 <ul>
   <% @products.each do |product| %>
     <li><%= link_to product.title, "https://#{@shop_session.url}/admin/products/#{product.id}", target: "_top" %></li>
