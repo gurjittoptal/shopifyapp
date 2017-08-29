@@ -4,9 +4,11 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
 
   def list
     processed = []
-    
-    storeid = params[:shop]
-    if storeid==''
+   
+    storeid = ''
+    if params.has_key?(:shop) 
+      storeid = params[:shop]
+    else
       storeid = ShopifyAPI::Shop.current().domain 
     end
     
