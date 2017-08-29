@@ -79,9 +79,11 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
       else
         result['status'] = 'error'
         result['message'] = 'Invalid Shopid'
+      end
     else
       result['status'] = 'error'
       result['message'] = 'Product does not exist'
+    end
 
     render json: result
   end
