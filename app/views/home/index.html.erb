@@ -13,18 +13,18 @@
 
      h2 {
 	color: #212b35;
-    	font-size: 2rem;
+    	font-size: 20px;
     	font-weight: 400;
-	line-height: 2.4rem;}
+	line-height: 24px;}
 
     .delete-from-slider{
-	font-size: 1.5rem; 
+	font-size: 12px; 
 	color:red;
         cursor:pointer;
         }
 
     #toptal-slider-shopify-id {
-	padding 8px 12px; 
+	padding:8px 12px; 
 	width:145px; 
 	}
     #toptal-slider-addproduct{
@@ -67,7 +67,7 @@
       $.each(data,function(i,prod) {
              var sliderproduct = $('<div>');
              sliderproduct.attr('pid',prod.id);
-             sliderproduct.html(prod.title+' <span class="delete-from-slider" attr-pid="'+prod.id+'">Delete</span>');
+             sliderproduct.html(prod.title+' <span class="delete-from-slider" attr-pid="'+prod.id+'"> [ DELETE ]</span>');
              sliderproduct.addClass('tpslider');
              sliderproduct.addClass('tpslider-'+prod.id);
              sliderproduct.appendTo('.slider-products');
