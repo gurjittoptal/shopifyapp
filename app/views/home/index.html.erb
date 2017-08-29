@@ -38,7 +38,7 @@
       $.each(data,function(i,prod) {
              var sliderproduct = $('<div>');
              sliderproduct.attr('pid',prod.id);
-             sliderproduct.class('title',prod.title);
+             sliderproduct..html(prod.title);
              sliderproduct.addClass('slider-'+prod.id);
              sliderproduct.addClass('delete-from-slider');
              sliderproduct.appendTo('.slider-products');
