@@ -63,8 +63,8 @@ class ToptalsliderproductController < ShopifyApp::AuthenticatedController
     render json: result
   end
 
-  def delete(:pid)
-    #pid = params[:pid]
+  def delete
+    pid = params[:pid]
 
     result = {}
     if SlideshopProduct.exists?(:shopify_product_id => pid) 
