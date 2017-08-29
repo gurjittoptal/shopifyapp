@@ -1,9 +1,4 @@
   (function(){
-    // load slidercss
-    var ls = document.createElement('link');
-    ls.rel="stylesheet";
-    ls.href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css";
-    document.getElementsByTagName('head')[0].appendChild(ls);
     
     var loadScript = function(url, callback){
     var script = document.createElement("script");
@@ -30,9 +25,11 @@
 
 
   var myAppJavaScript = function($){
+   
+  if ( $( ".toptal-slider" ).length ) {
     
     $.getScript( "//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js", function( data, textStatus, jqxhr ) {
-    //$.getScript( "https://tpshp.herokuapp.com/css/sss.css", function( data, textStatus, jqxhr ) {
+    $.getScript( "//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css", function( data, textStatus, jqxhr ) {
       console.log( "Load was performed." );
        
       $.get( "/a/proxy/toptalsliderproduct", function( data ) {
@@ -45,13 +42,12 @@
              pimg.appendTo('.toptal-slider');
 	  }});
           
-          //$('.toptal-slider').sss();
           $('.toptal-slider').slick();
           console.log(data.length);
         });
-     //});
+       });
      });
-
+    } // run only if .toptal-slider exists in markup
    };
 
   if ((typeof jQuery === 'undefined') || (parseFloat(jQuery.fn.jquery) < 1.7)) {
