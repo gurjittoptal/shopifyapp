@@ -1,5 +1,5 @@
 class HomeController < ShopifyApp::AuthenticatedController
   def index
-    @storeid = ShopifyAPI::Shop.current().domain
+    @shopdomain = ShopifyAPI::Shop.current().domain
   end
 end
