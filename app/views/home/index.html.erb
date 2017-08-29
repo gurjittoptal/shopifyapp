@@ -80,8 +80,7 @@
     	    url: '/toptalsliderproduct?id='+pid,
     	    type: 'DELETE',
             success: function(result) {
-                 if(result.hasOwnProperty('id')){
-		     $('.tpslider-'+result.id).remove();
+                 if(result.hasOwnProperty('id')){ $('.tpslider-'+result.id).remove();}
 		}
 	  });
         });
