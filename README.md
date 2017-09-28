@@ -5,6 +5,7 @@ https://tpshp.herokuapp.com
 
 The app is used in ythe shop below
 https://toptaldemo.myshopify.com/
+(store password is 123)
 
 
 
