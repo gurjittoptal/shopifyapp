@@ -1,3 +1,15 @@
+Shopify app to add a slider
+
+App is hosted on heroku
+https://tpshp.herokuapp.com
+
+The app is used in ythe shop below
+https://toptaldemo.myshopify.com/
+
+
+
+---
+
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -21,4 +33,3 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
